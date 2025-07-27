@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skymetric V4 PRO - MetaVision</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons (caso ainda não tenha) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between; /* Para alinhar itens */
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .btn-voltar {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #00f0ff;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      transition: color 0.3s ease;
+    }
+
+    .btn-voltar:hover {
+      color: #008c9e;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fundo-estrelado {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black url('images/fundo-estrelado.png') repeat;
+      z-index: -1;
+    }
+
+    .ultra-secreto {
+      color: #ff4d4d;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 30px;
+      text-shadow: 0 0 10px red;
+      animation: pulsar 2s infinite;
+    }
+
+    .imagem-centralizada {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .imagem-centralizada img {
+      width: 200px;
+      animation: pulsar 2s infinite;
+    }
+
+    .botao {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #e60000;
+    }
+
+    @keyframes pulsar {
+      0% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0.6; transform: scale(1); }
+    }
+
+    footer {
+      background-color: #111;
+      padding: 20px 0;
+      color: white;
+    }
+
+    .logo-fooder img {
+      width: 120px;
+    }
+
+    .interface {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .line-fooder.borda {
+      border-top: 1px solid #444;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .line-fooder p a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .line-fooder p a:hover {
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .botao {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      .btn-voltar {
+        font-size: 20px;
+        left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fundo-estrelado"></div>
+
+  <header>
+  <div class="interface" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="logo">
+      <a href="index.html" title="Voltar para a página principal">
+        <img src="images/logo01.png" alt="logo metavision" style="cursor: pointer;" />
+      </a>
+    </div>
+    <button class="botao" onclick="window.location.href='sorteio.html'">ROLETA DE PREMIOS</button>
+  </div>
+</header>
+
+
+  <main>
+    <div class="imagem-centralizada">
+      <img src="images/logo01.png" alt="Logo animada" />
+    </div>
+
+    <h1 class="ultra-secreto">EM DESENVOLVIMENTO<br><span style="font-size: 18px; font-weight: normal;">Classificação: Ultra Secreta</span></h1>
+  </main>
+
+  <footer>
+  <div class="interface">
+    <div class="line-fooder">
+      <div class="logo-fooder">
+        <a href="admin.html" title="Área de ganhadores">
+          <img src="images/logo01.png" alt="logo footer" style="cursor:pointer;" />
+        </a>
+      </div>
+    </div>
+    <div class="line-fooder borda">
+      <p>
+        <i class="bi bi-envelope-arrow-down-fill"></i>
+        <a href="mailto:metavision16dominio@gmail.com">metavision16dominio@gmail.com</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

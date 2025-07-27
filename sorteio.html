@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roleta de Premiação</title>
+  <style>
+    /* Estilo da tela de carregamento */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+    }
+    .spinner {
+      border: 8px solid #f3f3f3; /* Cor do fundo */
+      border-top: 8px solid #3498db; /* Cor do spinner */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h1 {
+      font-size: 24px;
+      margin: 10px 0;
+      text-align: center;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    .border-animation {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 15px;
+      background: linear-gradient(270deg, #ff416c, #ff4b2b, #ffcc00, #00c6ff, #00d2ff);
+      background-size: 400%;
+      animation: gradient-animation 10s ease infinite;
+      z-index: -1;
+    }
+    @keyframes gradient-animation {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    input, select, button {
+      padding: 12px;
+      margin: 10px 0;
+      width: calc(100% - 24px);
+      border-radius: 8px;
+      border: 1px solid #bdc3c7;
+      box-sizing: border-box;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+    input:focus, select:focus {
+      border-color: #3498db;
+      outline: none;
+      background-color: #f8f9fa;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+    .slot-container {
+      margin: 20px auto;
+      width: 300px;
+      height: 150px;
+      overflow: hidden;
+      border: 5px solid #34495e;
+      border-radius: 10px;
+      background: #fff;
+      position: relative;
+    }
+    .slot {
+      position: absolute;
+      width: 100%;
+      transition: transform 3s ease-out;
+    }
+    .slot div {
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      border-bottom: 1px solid #ddd;
+      background: #f1c40f;
+    }
+    #mensagem {
+      display: none;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .ganhou {
+      animation: fadeIn 1s;
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .regras {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Tela de Carregamento -->
+<div id="loading">
+  <div class="spinner"></div>
+  <h1>Carregando Roleta de Premiação</h1>
+  <p>Aguarde enquanto preparamos tudo para você!</p>
+</div>
+
+<div class="container" style="display: none;">
+  <div class="border-animation"></div>
+  <h1>Roleta de Premiação - Vertical</h1>
+
+  <div class="regras">
+    <h2>Regras da Roleta</h2>
+    <p><strong>1. Uma única participação por pessoa:</strong> Cada participante pode girar a roleta apenas uma vez. E-mails duplicados ou tentativas extras serão desclassificadas.</p>
+    <p><strong>2. Preenchimento obrigatório dos dados:</strong> Para participar, é obrigatório preencher corretamente: Nome, E-mail válido, Tipo (Aluno ou Não Aluno).</p>
+    <p><strong>3. É necessário enviar um print do prêmio:</strong> Após girar a roleta, o ganhador deve tirar um print da tela com o prêmio sorteado. O print será utilizado como comprovante de premiação.</p>
+    <p><strong>4. Entrega dos prêmios será no dia da exposição do projeto:</strong> Os prêmios serão entregues presencialmente no evento da Exposição do Projeto Skymetric V4 PRO. Somente com a apresentação do print original o prêmio será liberado.</p>
+    <p><strong>5. Prêmios são intransferíveis:</strong> Os prêmios não podem ser trocados, revendidos ou transferidos para outra pessoa.</p>
+    <p><strong>6. Desclassificação por fraude:</strong> Tentativas de burlar o sistema (como criar e-mails falsos ou modificar o código da roleta) resultarão em desclassificação imediata.</p>
+  </div>
+
+  <div>
+    <input type="text" id="inputNome" placeholder="Seu nome" required />
+    <input type="email" id="inputEmail" placeholder="Seu e-mail" required />
+    <select id="inputTipo" required>
+      <option value="">Selecione</option>
+      <option value="Aluno">Aluno</option>
+      <option value="Não Aluno">Não Aluno</option>
+    </select>
+    <button id="btnParticipar">Participar</button>
+  </div>
+
+  <div class="slot-container">
+    <div class="slot" id="slot"></div>
+  </div>
+
+  <button id="btnGirar" disabled>Girar Roleta</button>
+  <div id="mensagem"></div>
+
+  <h2>Ganhador</h2>
+  <p id="textoGanhador">Nenhum ainda.</p>
+
+  <hr>
+</div>
+
+<script>
+(() => {
+  // Ocultar a tela de carregamento após 1 segundo (ou o tempo que você quiser)
+  setTimeout(() => {
+    document.getElementById('loading').style.display = 'none';
+    document.querySelector('.container').style.display = 'block';
+  }, 1000); // 1000 ms = 1 segundo
+
+  const premios = [
+    { nome: 'Vale-presente de R$20 (Google Play ou iFood)', estoque: 10 },
+    { nome: 'Kit de doces e snacks', estoque: 10 },
+    { nome: 'Cartão “Imune de punições por 1 dia”', estoque: 10 },
+    { nome: 'Item ou skin de jogo (Free Fire, Roblox etc.)', estoque: 10 },
+    { nome: 'Comando VIP: escolha a próxima atividade do grupo', estoque: 10 },
+    { nome: 'Mensagem surpresa com elogio público', estoque: 10 }
+  ];
+
+  const ganhadores = JSON.parse(localStorage.getItem('ganhadores') || "[]");
+
+  const inputNome = document.getElementById('inputNome');
+  const inputEmail = document.getElementById('inputEmail');
+  const inputTipo = document.getElementById('inputTipo');
+  const btnParticipar = document.getElementById('btnParticipar');
+  const btnGirar = document.getElementById('btnGirar');
+  const textoGanhador = document.getElementById('textoGanhador');
+  const mensagem = document.getElementById('mensagem');
+  const slot = document.getElementById('slot');
+
+  function salvaLocal() {
+    localStorage.setItem('ganhadores', JSON.stringify(ganhadores));
+  }
+
+  const listaExpandida = [];
+  for (let i = 0; i < 15; i++) {
+    premios.forEach(p => {
+      listaExpandida.push(p);
+    });
+  }
+  listaExpandida.forEach(p => {
+    const div = document.createElement('div');
+    div.textContent = p.nome;
+    slot.appendChild(div);
+  });
+
+  btnParticipar.onclick = () => {
+    if (!inputNome.value.trim() || !inputEmail.value.trim() || !inputTipo.value) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+    if (ganhadores.some(g => g.email.toLowerCase() === inputEmail.value.trim().toLowerCase())) {
+      alert("Esse e-mail já participou e ganhou. Você não pode participar novamente.");
+      return;
+    }
+    btnGirar.disabled = false;
+    alert("Você pode girar a roleta agora!");
+  };
+
+  btnGirar.onclick = () => {
+    const pos = Math.floor(Math.random() * premios.length);
+    const premioSelecionado = premios[pos];
+
+    if (premioSelecionado.estoque > 0) {
+      const deslocamento = pos * 50 + premios.length * 50 * 10; 
+      slot.style.transform = `translateY(-${deslocamento}px)`;
+
+      setTimeout(() => {
+        premioSelecionado.estoque--; // Reduz o estoque
+        const ganhador = {
+          nome: inputNome.value.trim(),
+          email: inputEmail.value.trim(),
+          tipo: inputTipo.value,
+          premio: premioSelecionado.nome,
+          data: new Date().toISOString()
+        };
+        ganhadores.push(ganhador);
+        salvaLocal();
+        textoGanhador.textContent = `${ganhador.nome} ganhou: ${ganhador.premio}`;
+        mensagem.textContent = `Parabéns! Você ganhou "${ganhador.premio}". Tire um print da tela para registrar seu prêmio!`;
+        mensagem.style.display = 'block';
+        textoGanhador.classList.add('ganhou');
+        setTimeout(() => textoGanhador.classList.remove('ganhou'), 3000);
+        btnGirar.disabled = true;
+      }, 3100);
+    } else {
+      alert(`Desculpe, mas o prêmio "${premioSelecionado.nome}" não está mais disponível.`);
+    }
+  };
+})();
+</script>
+</body>
+</html>

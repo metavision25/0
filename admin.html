@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Administração - Ganhadores</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+      padding: 40px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00f0ff;
+    }
+    .ganhador {
+      background-color: #1c1c1c;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid #00f0ff;
+    }
+    .ganhador strong {
+      color: #00f0ff;
+    }
+    .limpar-btn {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .limpar-btn:hover {
+      background-color: #c0392b;
+    }
+    .senha-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .senha-input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #00f0ff;
+      border-radius: 5px;
+      color: #00f0ff;
+      background-color: #1c1c1c;
+    }
+    .entrar-btn {
+      background-color: #00f0ff;
+      border: none;
+      color: black;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .entrar-btn:hover {
+      background-color: #00c0cc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Administração - Lista de Ganhadores</h1>
+  <div class="senha-container">
+    <input type="password" id="senha" class="senha-input" placeholder="Digite a senha" />
+    <button class="entrar-btn" onclick="entrar()">Entrar</button>
+  </div>
+  <div id="listaGanhadores" style="display: none;"></div>
+  <button class="limpar-btn" onclick="limparGanhadores()" style="display: none;">Limpar Lista</button>
+
+  <script>
+    const lista = document.getElementById('listaGanhadores');
+    const senhaInput = document.getElementById('senha');
+    const limparBtn = document.querySelector('.limpar-btn');
+
+    
+    const senhaCorretaHash = hashSenha("premiosecret"); 
+
+   
+    function hashSenha(senha) {
+      let hash = 0, i, chr;
+      for (i = 0; i < senha.length; i++) {
+        chr = senha.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
+        hash |= 0; 
+      }
+      return hash.toString();
+    }
+
+    function carregarGanhadores() {
+      const ganhadores = JSON.parse(localStorage.getItem('ganhadores') || '[]');
+      lista.innerHTML = '';
+
+      if (ganhadores.length === 0) {
+        lista.innerHTML = '<p>Nenhum ganhador registrado.</p>';
+        return;
+      }
+
+      ganhadores.reverse().forEach((g) => {
+        const div = document.createElement('div');
+        div.classList.add('ganhador');
+        div.innerHTML = `
+          <p><strong>Nome:</strong> ${g.nome}</p>
+          <p><strong>Email:</strong> ${g.email}</p>
+          <p><strong>Tipo:</strong> ${g.tipo}</p>
+          <p><strong>Prêmio:</strong> ${g.premio}</p>
+          <p><strong>Data:</strong> ${new Date(g.data).toLocaleString()}</p>
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    function limparGanhadores() {
+      if (confirm("Tem certeza que deseja apagar todos os ganhadores?")) {
+        localStorage.removeItem('ganhadores');
+        carregarGanhadores();
+      }
+    }
+
+    function entrar() {
+      const senhaHash = hashSenha(senhaInput.value);
+      if (senhaHash === senhaCorretaHash) {
+        document.querySelector('.senha-container').style.display = 'none';
+        lista.style.display = 'block';
+        limparBtn.style.display = 'block';
+        carregarGanhadores();
+      } else {
+        alert("Senha incorreta! Tente novamente.");
+      }
+    }
+  </script>
+</body>
+</html>

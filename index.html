@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>meta VISION</title>
+
+    <style>
+       /* Tela de loading */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden; /* já tem */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    touch-action: none;  /* bloqueia scroll e toques */
+}
+
+/* Evitar scroll do body quando loading ativo */
+body.loading {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none; /* bloqueia toque */
+}
+
+
+        #loading-screen .loader-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 40px;
+        }
+
+        #loading-screen .logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        #loading-screen .logo.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* Spinner Tecnológico (Linhas de Expansão) */
+        #loading-screen .spinner {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        #loading-screen .spinner div {
+            position: absolute;
+            border: 4px solid #00f0ff;
+            opacity: 1;
+            border-radius: 50%;
+            animation: spinnerEffect 1.2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+
+        #loading-screen .spinner div:nth-child(2) {
+            animation-delay: -0.6s;
+        }
+
+        @keyframes spinnerEffect {
+            0% {
+                top: 28px;
+                left: 28px;
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            100% {
+                top: -1px;
+                left: -1px;
+                width: 58px;
+                height: 58px;
+                opacity: 0;
+            }
+        }
+
+        #loading-screen .loading-text {
+            color: #00f0ff;
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            animation: fadeText 2s infinite alternate;
+        }
+
+        @keyframes fadeText {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Tela de Loading Overlay -->
+<div id="loading-screen">
+    <div class="loader-container">
+        <img src="images/logo01.png" class="logo" id="logo1" alt="Logo 1" />
+        <img src="images/image03.png" class="logo" id="logo2" alt="Logo 2" />
+        <img src="images/WhatsApp Image 2025-06-19 at 12.51.31.jpeg" class="logo" id="logo3" alt="Logo 3" />
+    </div>
+
+    <div class="spinner">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="loading-text">LOADING...</div>
+</div>
+
+<!-- Conteúdo principal do site -->
+<div class="fundo-estrelado"></div>
+
+<header>
+    <div class="interface">
+        <div class="logo">
+            <a href="index.html" id="logo-link">
+                <img src="images/logo01.png" alt="logo da metavision" />
+            </a>
+        </div>
+
+        <nav class="menu-desktop">
+            <ul>
+                <li><a href="#topo">início</a></li>
+                <li><a href="#especialidades">especialidades</a></li>
+                <li><a href="#sobre">sobre</a></li>
+                <li><a href="#portifolio">projetos</a></li>
+            </ul>
+        </nav>
+
+        <div class="btn-contato">
+          
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="topo-do-site" id="topo">
+        <div class="interface">
+            <div class="flex">
+                <div class="txt-topo-site">
+                    <h1>GRUPO METAVISION<span>.</span></h1>
+                    <p>
+                        O METAVISION é um grupo inovador focado no desenvolvimento de tecnologias de
+                        monitoramento climático, com destaque para a criação de uma estação meteorológica de última geração.
+                    </p>
+                    <div class="btn-contato">
+                        <a href="#contato">
+                            <button>entre em contato</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="img-topo-site">
+                    <img src="images/image.png" alt="imagem do grupo" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="especialidades" id="especialidades">
+        <div class="interface">
+            <h2 class="titulo">
+                MINHAS <span>ESPECIALIDADES.</span>
+            </h2>
+            <div class="flex">
+                <div class="especialidades-box">
+                    <i class="bi bi-code-slash"></i>
+                    <h3>code</h3>
+                    <p>Configuração de sistema</p>
+                </div>
+                <div class="especialidades-box">
+                    <i class="bi bi-bricks"></i>
+                    <h3>designer</h3>
+                    <p>Configuração moderna</p>
+                </div>
+                <div class="especialidades-box">
+                    <i class="bi bi-battery-charging"></i>
+                    <h3>eficiência energética</h3>
+                    <p>Sustentabilidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO EQUIPE -->
+    <section class="equipe">
+        <div class="interface">
+            <div class="flex">
+                <div class="txt-topo-site">
+                    <h1>
+                        EQUIPE <span>METAVISION</span>
+                    </h1>
+                    <p>
+                        Somos um time apaixonado por inovação, tecnologia e criatividade. A MetaVision é formada por estudantes, desenvolvedores e visionários que acreditam no poder da colaboração para transformar ideias em realidade. Cada integrante contribui com habilidades únicas para o desenvolvimento de soluções modernas e impactantes, como a Skymetric.
+                    </p>
+                    <p>
+                        Trabalhamos com projetos de IA, sensores, automação e rastreamento astronômico, sempre com foco na excelência e no futuro. Nosso objetivo é criar tecnologias que inspirem e melhorem o mundo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <div class="interface">
+            <div class="flex">
+                <div class="img-sobre">
+                    <img src="images/logo01.png" alt="imagem da equipe" />
+                </div>
+                <div class="txt-sobre">
+                    <h2>
+                        EQUIPE, <span>METAVISION.</span>
+                    </h2>
+                    <p>
+                        <span>MetaVision</span> é uma equipe formada por jovens apaixonados por tecnologia, ciência e inovação, que acreditam no poder do conhecimento para transformar o mundo. Nosso grupo nasceu com o propósito de desenvolver projetos inteligentes e acessíveis, que tragam soluções reais para desafios ambientais e sociais.
+                    </p>
+                    <p>
+                        Somos movidos por curiosidade, criatividade e um espírito colaborativo. Cada integrante da MetaVision contribui com suas habilidades únicas, e juntos formamos uma equipe forte, unida por um ideal: usar a tecnologia para o bem.
+                    </p>
+                    <p>
+                        Nosso foco principal está no desenvolvimento de estações meteorológicas inteligentes, como a linha Skymetric, que evolui constantemente com novas funcionalidades, sensores e integração com APIs climáticas. Mas nossos projetos não param por aí. Também exploramos áreas como eficiência energética, automação com Arduino, internet das coisas (IoT) e muito mais.
+                    </p>
+                    <p>
+                        A MetaVision é mais do que uma equipe: é uma visão de futuro. Um movimento de jovens que acreditam que com esforço, estudo e dedicação é possível ir além, impactar positivamente e inspirar outras mentes criativas ao redor.
+                    </p>
+                    <div class="btn-social">
+                        <a href="#"><button><i class="bi bi-youtube"></i></button></a>
+                        <a href="#"><button><i class="bi bi-facebook"></i></button></a>
+                        <a href="#"><button><i class="bi bi-youtube"></i></button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portifolio" id="portifolio">
+        <div class="interface">
+            <h2 class="titulo">
+                PROJETOS<span>  SKYMETRIC</span>
+            </h2>
+            <div class="flex">
+                <div class="img-port" style="background-image: url(images/image.png);">
+                    <a href="skymetric-v1.html" target="_blank" class="overley">SKYMETRIC V1</a>
+                </div>
+                <div class="img-port" style="background-image: url(images/skymetricv4.png);">
+                    <a href="skymetric-v4-pro.html" target="_blank" class="overley">SKYMETRIC V4 PRO</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="interface">
+            <h2 class="titulo">
+                ENTRE EM <span>CONTATO</span>
+            </h2>
+            <form action="mailto:metavision16dominio@gmail.com" method="POST" enctype="text/plain">
+                <input type="text" name="nome" placeholder="Seu nome" required />
+                <input type="email" name="email" placeholder="Seu e-mail" required />
+                <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="interface">
+        <div class="line-fooder">
+            <div class="logo-fooder">
+                <img src="images/logo01.png" alt="logo footer" />
+            </div>
+            <div class="btn-social">
+                <a href="#"><button><i class="bi bi-youtube"></i></button></a>
+                <a href="#"><button><i class="bi bi-facebook"></i></button></a>
+                <a href="#"><button><i class="bi bi-youtube"></i></button></a>
+            </div>
+        </div>
+        <div class="line-fooder borda">
+            <p>
+                <i class="bi bi-envelope-arrow-down-fill"></i>
+                <a href="mailto:metavision16dominio@gmail.com">metavision16dominio@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Código para trocar as logos no loading
+    const logos = [
+        document.getElementById('logo1'),
+        document.getElementById('logo2'),
+        document.getElementById('logo3')
+    ];
+
+    let current = 0;
+    function showNextLogo() {
+        logos.forEach(logo => logo.classList.remove('show'));
+        logos[current].classList.add('show');
+        current = (current + 1) % logos.length;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        const MIN_LOADING_TIME = 15000; // 3 segundos
+
+        if (sessionStorage.getItem('loadingShown')) {
+            // Já mostrou o loading nesta aba, oculta imediatamente
+            loadingScreen.style.display = 'none';
+        } else {
+            // Primeiro acesso na aba, mostra loading e troca logos
+            sessionStorage.setItem('loadingShown', 'true');
+            showNextLogo();
+            const intervalId = setInterval(showNextLogo, 3000);
+
+            const startTime = Date.now();
+
+            window.addEventListener('load', () => {
+                const elapsed = Date.now() - startTime;
+                const remainingTime = MIN_LOADING_TIME - elapsed;
+
+                function hideLoading() {
+                    loadingScreen.classList.add('hidden');
+                    clearInterval(intervalId);
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+
+                if (remainingTime > 0) {
+                    setTimeout(hideLoading, remainingTime);
+                } else {
+                    hideLoading();
+                }
+            });
+        }
+
+        // Para evitar recarregar e reexibir loading ao clicar na logo
+        const logoLink = document.getElementById('logo-link');
+        if (logoLink) {
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Navegar para 'index.html' sem reload (simula SPA)
+                history.pushState(null, '', 'index.html');
+                window.scrollTo(0, 0);
+                // Você pode aqui implementar a troca do conteúdo se quiser SPA real
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

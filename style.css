@@ -1,0 +1,573 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* resto do seu CSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-color: #000;
+  height: 100vh;
+}
+
+.interface {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.image {
+  display: flex;
+}
+
+.btn-contato button {
+  padding: 10px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #00ff08;
+  border: 0;
+  border-radius: 30px;
+  transition: 0.2s;
+}
+
+h2.titulo {
+  color: #fff;
+  font-size: 38px;
+  text-align: center;
+}
+
+h2.titulo span {
+  color: #00ff08;
+}
+
+button:hover {
+  box-shadow: 0px 0px 8px rgb(0, 251, 29);
+  transform: scale(1.05);
+}
+
+header {
+  padding: 40px 4%;
+}
+
+header > .interface {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: #5a5a5a;
+  text-decoration: none;
+  display: inline-block;
+}
+
+header a:hover {
+  color: #fff;
+  transform: scale(1.05);
+}
+
+header nav ul {
+  list-style-type: none;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 0 100px;
+}
+
+.logo img {
+  width: 148px;
+  height: auto;
+}
+
+section.topo-do-site {
+  padding: 50px 4%;
+}
+
+section.topo-do-site .flex {
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+}
+
+.topo-do-site h1 {
+  color: #fff;
+  font-size: 42px;
+  line-height: 40px;
+}
+
+.topo-do-site .txt-topo-site h1 span {
+  color: #00ff08;
+}
+
+.topo-do-site .txt-topo-site p {
+  color: #fff;
+  margin: 40px 0;
+}
+
+.txt-topo-site {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.topo-do-site .img-topo-site img {
+  position: relative;
+  animation: flutuar 2s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 30px;
+  }
+}
+
+section.especialidades {
+  padding: 40px 4%;
+}
+
+section.especialidades .flex {
+  gap: 60px;
+}
+
+.especialidades .especialidades-box {
+  color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 45px;
+  transition: 0.2s;
+}
+
+.especialidades .especialidades-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #ffffff60;
+}
+
+.especialidades .especialidades-box i {
+  font-size: 70px;
+  color: #00ff08;
+}
+
+.especialidades .especialidades-box h3 {
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+.especialidades-box {
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+  width: calc(30.60% - 20px);
+}
+
+section.sobre {
+  padding: 40px 4%;
+}
+
+section.sobre .flex {
+  align-items: center;
+  gap: 60px;
+}
+
+.sobre .txt-sobre {
+  color: #fff;
+}
+
+.sobre .txt-sobre h2 {
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: 30px;
+}
+
+.sobre .txt-sobre h2 span {
+  color: #00ff08;
+  display: block;
+}
+
+.sobre .txt-sobre p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ddd;
+  margin: 20px 0;
+  text-align: justify;
+}
+
+.btn-social button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: #00ff08;
+  font-size: 30px;
+  cursor: pointer;
+  margin: 0 20px;
+  display: inline-block;
+}
+
+.img-sobre {
+  width: 40%;
+  margin-right: 20px;
+}
+
+.img-sobre img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.txt-sobre {
+  width: 60%;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .btn-contato button {
+    width: 100%;
+  }
+  .especialidades-box {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .img-sobre {
+    width: 100%;
+    margin-right: 0;
+  }
+  .txt-sobre {
+    width: 100%;
+  }
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+section.portifolio {
+  padding: 80px 4%;
+  box-shadow: 0 0 40px 10px #ffffff36;
+}
+
+section.portifolio .flex {
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.img-port {
+  width: 360px;
+  height: 460px;
+  background-size: cover;
+  background-position: 100% 0%;
+  transition: 8s;
+  cursor: pointer;
+  border-radius: 40px;
+  position: relative;
+}
+
+.img-port:hover {
+  background-position: 100% 100%;
+}
+
+.overley {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000008c;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #faf9f9;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.overley:hover {
+  opacity: 1;
+}
+
+footer {
+  padding: 40px 4%;
+  background-color: #000;
+  box-shadow: 0 0 40px 10px #ffffff36;
+}
+
+footer .line-fooder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+footer .logo-fooder {
+  flex: 1;
+}
+
+footer .logo-fooder img {
+  width: 100px;
+  height: auto;
+}
+
+.borda {
+  border-top: 2px solid #0af31e;
+}
+
+footer .line-fooder p i {
+  color: #0af31e;
+  font-size: 22px;
+}
+
+footer .line-fooder p a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer .line-fooder p a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  footer .line-fooder {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  footer .line-fooder p {
+    margin-top: 10px;
+  }
+}
+
+.fundo-estrelado {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.fundo-estrelado::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  animation: estrelas 60s linear infinite;
+  opacity: 0.8;
+  filter: brightness(1.8);
+}
+
+@keyframes estrelas {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.titulo-portifolio {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titulo-portifolio p {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f7efef;
+  margin: 0;
+}
+
+.titulo-portifolio span {
+  font-size: 18px;
+  font-weight: 400;
+  color: #f9faf9;
+  margin: 0;
+}
+
+.conteudo-skymetric {
+  padding: 40px 20px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.imagem-centralizada {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.imagem-centralizada img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.texto-skymetric h2 {
+  margin-top: 30px;
+  color: #00ffff;
+  font-size: 22px;
+}
+
+.texto-skymetric p, .texto-skymetric li {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.contato {
+  padding: 60px 4%;
+  background-color: #0d0d0d;
+  color: white;
+}
+
+.contato form {
+  max-width: 600px;
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contato input,
+.contato textarea {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 16px;
+}
+
+.contato input::placeholder,
+.contato textarea::placeholder {
+  color: #999;
+}
+
+.contato button {
+  padding: 15px;
+  border: none;
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contato button:hover {
+  background-color: #cc0000;
+}
+
+.img-port a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.equipe .img-topo-site img {
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+/* Exemplo de responsividade padrão para .flex */
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Responsividade em telas menores */
+@media screen and (max-width: 768px) {
+  .flex {
+      flex-direction: column;
+  }
+
+  .txt-topo-site, .img-topo-site {
+      width: 100%;
+      text-align: center;
+  }
+
+  .img-topo-site img {
+      max-width: 100%;
+      height: auto;
+  }
+}
+.codigo-fonte {
+  padding: 80px 4%;
+  color: #fff;
+}
+
+.codigo-fonte .titulo {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.codigo-fonte .descricao-codigo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ccc;
+  font-size: 1.1em;
+}
+
+.bloco-codigo {
+  background-color: #111;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-x: auto;
+  max-height: 600px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.bloco-codigo code {
+  color: #00ffea;
+  white-space: pre-wrap;
+  display: block;
+}
+
